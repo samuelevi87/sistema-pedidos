@@ -1,9 +1,9 @@
-package com.slevi.cursomc;
+package com.slevi.sdp;
 
-import com.slevi.cursomc.domain.Categoria;
-import com.slevi.cursomc.domain.Produto;
-import com.slevi.cursomc.repositories.CategoriaRepository;
-import com.slevi.cursomc.repositories.ProdutoRepository;
+import com.slevi.sdp.domain.Categoria;
+import com.slevi.sdp.domain.Produto;
+import com.slevi.sdp.repositories.CategoriaRepository;
+import com.slevi.sdp.repositories.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -12,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.Arrays;
 
 @SpringBootApplication
-public class CursomcApplication implements CommandLineRunner {
+public class SDPApplication implements CommandLineRunner {
 
     @Autowired
     private CategoriaRepository categoriaRepository;
@@ -20,7 +20,7 @@ public class CursomcApplication implements CommandLineRunner {
     private ProdutoRepository produtoRepository;
 
     public static void main(String[] args) {
-        SpringApplication.run(CursomcApplication.class, args);
+        SpringApplication.run(SDPApplication.class, args);
     }
 
     @Override

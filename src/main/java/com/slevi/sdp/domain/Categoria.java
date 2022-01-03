@@ -1,5 +1,7 @@
-package com.slevi.cursomc.domain;
+package com.slevi.sdp.domain;
 
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,6 +16,8 @@ public class Categoria implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
+
+    @JsonManagedReference
     @ManyToMany(mappedBy = "categorias")
     private List<Produto> produtos = new ArrayList<Produto>();
 

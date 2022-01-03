@@ -1,7 +1,7 @@
-package com.slevi.cursomc.resources;
+package com.slevi.sdp.resources;
 
-import com.slevi.cursomc.domain.Categoria;
-import com.slevi.cursomc.services.CategoriaService;
+import com.slevi.sdp.domain.Categoria;
+import com.slevi.sdp.services.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @RestController

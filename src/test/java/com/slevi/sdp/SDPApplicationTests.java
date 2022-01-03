@@ -1,10 +1,10 @@
-package com.slevi.cursomc;
+package com.slevi.sdp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CursomcApplicationTests {
+class SDPApplicationTests {
 
     @Test
     void contextLoads() {
