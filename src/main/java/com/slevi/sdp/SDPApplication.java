@@ -1,8 +1,12 @@
 package com.slevi.sdp;
 
 import com.slevi.sdp.domain.Categoria;
+import com.slevi.sdp.domain.Cidade;
+import com.slevi.sdp.domain.Estado;
 import com.slevi.sdp.domain.Produto;
 import com.slevi.sdp.repositories.CategoriaRepository;
+import com.slevi.sdp.repositories.CidadeRepository;
+import com.slevi.sdp.repositories.EstadoRepository;
 import com.slevi.sdp.repositories.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -18,6 +22,10 @@ public class SDPApplication implements CommandLineRunner {
     private CategoriaRepository categoriaRepository;
     @Autowired
     private ProdutoRepository produtoRepository;
+    @Autowired
+    private EstadoRepository estadoRepository;
+    @Autowired
+    private CidadeRepository cidadeRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(SDPApplication.class, args);
@@ -61,6 +69,64 @@ public class SDPApplication implements CommandLineRunner {
 
         categoriaRepository.saveAll(Arrays.asList(ctg1, ctg2, ctg3, ctg4, ctg5));
         produtoRepository.saveAll(Arrays.asList(pdt1, pdt2, pdt3, pdt4, pdt5, pdt6, pdt7, pdt8, pdt9, pdt10));
+
+        Estado est1 = new Estado(null, "Acre", "AC");
+        Estado est2 = new Estado(null, "Alagoas", "AL");
+        Estado est3 = new Estado(null, "Amapá", "AP");
+        Estado est4 = new Estado(null, "Amazonas", "AM");
+        Estado est5 = new Estado(null, "Bahia", "BA");
+        Estado est6 = new Estado(null, "Ceará", "CE");
+        Estado est7 = new Estado(null, "Distrito Federal", "DF");
+        Estado est8 = new Estado(null, "Espírito Santo", "ES");
+        Estado est9 = new Estado(null, "Goiás", "GO");
+        Estado est10 = new Estado(null, "Maranhão", "MA");
+        Estado est11 = new Estado(null, "Mato Grosso", "MT");
+        Estado est12 = new Estado(null, "Mato Grosso do Sul", "MS");
+        Estado est13 = new Estado(null, "Minas Gerais", "MG");
+        Estado est14 = new Estado(null, "Pará", "PA");
+        Estado est15 = new Estado(null, "Paraíba", "PB");
+        Estado est16 = new Estado(null, "Paraná", "PR");
+        Estado est17 = new Estado(null, "Pernambuco", "PE");
+        Estado est18 = new Estado(null, "Piauí", "PI");
+        Estado est19 = new Estado(null, "Rio de Janeiro", "RJ");
+        Estado est20 = new Estado(null, "Rio Grande do Norte", "RN");
+        Estado est21 = new Estado(null, "Rio Grande do Sul", "RS");
+        Estado est22 = new Estado(null, "Rondônia", "RO");
+        Estado est23 = new Estado(null, "Roraima", "RR");
+        Estado est24 = new Estado(null, "Santa Catarina", "SC");
+        Estado est25 = new Estado(null, "São Paulo", "SP");
+        Estado est26 = new Estado(null, "Sergipe", "SE");
+        Estado est27 = new Estado(null, "Tocantins", "TO");
+
+
+        Cidade c1 = new Cidade(null, "BALNEÁRIO CAMBORIÚ", est24);
+        Cidade c2 = new Cidade(null, "POMERODE", est24);
+        Cidade c3 = new Cidade(null, "BLUMENAU", est24);
+        Cidade c4 = new Cidade(null, "BOMBINHAS", est24);
+        Cidade c5 = new Cidade(null, "ITAJAÍ", est24);
+        Cidade c6 = new Cidade(null, "ITAPEMA", est24);
+        Cidade c7 = new Cidade(null, "JOINVILLE", est24);
+        Cidade c8 = new Cidade(null, "LAGES", est24);
+        Cidade c9 = new Cidade(null, "URUBICI", est24);
+        Cidade c10 = new Cidade(null, "URUPEMA", est24);
+
+        Cidade c11 = new Cidade(null, "BELO HORIZONTE", est13);
+        Cidade c12 = new Cidade(null, "CONTAGEM", est13);
+        Cidade c13 = new Cidade(null, "OURO BRANCO", est13);
+        Cidade c14 = new Cidade(null, "OURO FINO", est13);
+        Cidade c15 = new Cidade(null, "OURO PRETO", est13);
+        Cidade c16 = new Cidade(null, "PATOS DE MINAS", est13);
+        Cidade c17 = new Cidade(null, "POÇOS DE CALDAS", est13);
+        Cidade c18 = new Cidade(null, "UBERABA", est13);
+        Cidade c19 = new Cidade(null, "UBERLÂNDIA", est13);
+        Cidade c20 = new Cidade(null, "UNAÍ", est13);
+
+
+        est24.getCidades().addAll(Arrays.asList(c1,c2,c3,c4,c5,c6,c7,c8,c9,c10));
+        est13.getCidades().addAll(Arrays.asList(c11,c12,c13,c14,c15,c16,c17,c18,c19,c20));
+
+        estadoRepository.saveAll(Arrays.asList(est1,est2,est3,est4,est5,est6,est7,est8,est9,est10,est11,est12,est13,est14,est15,est16,est17,est18,est19,est20,est21,est22,est23,est24,est25,est26,est27));
+        cidadeRepository.saveAll(Arrays.asList(c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20));
 
     }
 }
