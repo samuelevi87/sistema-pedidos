@@ -1,13 +1,8 @@
 package com.slevi.sdp;
 
-import com.slevi.sdp.domain.Categoria;
-import com.slevi.sdp.domain.Cidade;
-import com.slevi.sdp.domain.Estado;
-import com.slevi.sdp.domain.Produto;
-import com.slevi.sdp.repositories.CategoriaRepository;
-import com.slevi.sdp.repositories.CidadeRepository;
-import com.slevi.sdp.repositories.EstadoRepository;
-import com.slevi.sdp.repositories.ProdutoRepository;
+import com.slevi.sdp.domain.*;
+import com.slevi.sdp.domain.enums.TipoCliente;
+import com.slevi.sdp.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -26,6 +21,10 @@ public class SDPApplication implements CommandLineRunner {
     private EstadoRepository estadoRepository;
     @Autowired
     private CidadeRepository cidadeRepository;
+    @Autowired
+    private ClienteRepository clienteRepository;
+    @Autowired
+    private EnderecoRepository enderecoRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(SDPApplication.class, args);
@@ -128,5 +127,24 @@ public class SDPApplication implements CommandLineRunner {
         estadoRepository.saveAll(Arrays.asList(est1,est2,est3,est4,est5,est6,est7,est8,est9,est10,est11,est12,est13,est14,est15,est16,est17,est18,est19,est20,est21,est22,est23,est24,est25,est26,est27));
         cidadeRepository.saveAll(Arrays.asList(c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20));
 
+        Cliente cli1 = new Cliente(null, "Samuel Levi", "samuel@levi.com", "123456789-10", TipoCliente.PESSOA_FISICA);
+        cli1.getTelefones().addAll(Arrays.asList("27056190664", "27852178069", "3411196074"));
+        Endereco end1 = new Endereco(null, "Rua Adamastor", "25", "Casa", "Pitaco", "7073386157", cli1, c3);
+
+        Cliente cli2 = new Cliente(null, "Lacy Lax", "Shurlocke@Drew.uk", "38362686133469", TipoCliente.PESSOA_JURIDICA);
+        cli2.getTelefones().addAll(Arrays.asList("24508241097"));
+        Endereco end2 = new Endereco(null, "Rua Guilhermina", "254", "Casarão", "Palhoça", "24258828509", cli2, c13);
+
+        Cliente cli3 = new Cliente(null, "Theresita Gravenor", "Theresita@Gravenor.com", "1268613340", TipoCliente.PESSOA_FISICA);
+        cli3.getTelefones().addAll(Arrays.asList("31509716230"));
+        Endereco end3 = new Endereco(null, "Av Paraguai", "254", "Apto 03", "Vila Industrial", "11597873092", cli3, c9);
+
+        Cliente cli4 = new Cliente(null, "Camey Emmet", "Camey@Emmet.uk", "45678686133469", TipoCliente.PESSOA_JURIDICA);
+        cli4.getTelefones().addAll(Arrays.asList("31420549075", "23000041870", "5747268528"));
+        Endereco end4 = new Endereco(null, "Travessa do Tranco", "1306", "Gringotes", "Muggles", "5499450896", cli4, c19);
+
+
+        clienteRepository.saveAll(Arrays.asList(cli1, cli2, cli3, cli4));
+        enderecoRepository.saveAll(Arrays.asList(end1, end2, end3, end4));
     }
 }
