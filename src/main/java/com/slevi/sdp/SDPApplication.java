@@ -1,6 +1,7 @@
 package com.slevi.sdp;
 
 import com.slevi.sdp.domain.*;
+import com.slevi.sdp.domain.enums.EstadoPagamento;
 import com.slevi.sdp.domain.enums.TipoCliente;
 import com.slevi.sdp.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 @SpringBootApplication
@@ -25,6 +27,10 @@ public class SDPApplication implements CommandLineRunner {
     private ClienteRepository clienteRepository;
     @Autowired
     private EnderecoRepository enderecoRepository;
+    @Autowired
+    private PedidoRepository pedidoRepository;
+    @Autowired
+    private PagamentoRepository pagamentoRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(SDPApplication.class, args);
@@ -146,5 +152,24 @@ public class SDPApplication implements CommandLineRunner {
 
         clienteRepository.saveAll(Arrays.asList(cli1, cli2, cli3, cli4));
         enderecoRepository.saveAll(Arrays.asList(end1, end2, end3, end4));
+
+        SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+
+        Pedido ped1 = new Pedido(null, data.parse("02/01/2021 10:40"), cli1, end1);
+        Pagamento pgto1 = new PagamentoComCartao(null, EstadoPagamento.QUITADO, ped1, 6);
+        ped1.setPagamento(pgto1);
+        Pedido ped2 = new Pedido(null, data.parse("04/01/2021 16:14"), cli1, end1);
+        Pagamento pgto2 = new PagamentoComBoleto(null, EstadoPagamento.PENDENTE, ped2, data.parse("04/02/2021 00:00"), null);
+        ped2.setPagamento(pgto2);
+        Pedido ped3 = new Pedido(null, data.parse("04/01/2021 16:14"), cli2, end2);
+        Pagamento pgto3 = new PagamentoComCartao(null, EstadoPagamento.CANCELADO, ped3, 2);
+        ped3.setPagamento(pgto3);
+
+        cli1.getPedidos().addAll(Arrays.asList(ped1, ped2));
+        cli1.getPedidos().addAll(Arrays.asList(ped3));
+
+        pedidoRepository.saveAll(Arrays.asList(ped1, ped2, ped3));
+        pagamentoRepository.saveAll(Arrays.asList(pgto1, pgto2, pgto3));
+
     }
 }
