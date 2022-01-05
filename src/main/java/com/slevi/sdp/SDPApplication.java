@@ -31,6 +31,9 @@ public class SDPApplication implements CommandLineRunner {
     private PedidoRepository pedidoRepository;
     @Autowired
     private PagamentoRepository pagamentoRepository;
+    @Autowired
+    private ItemPedidoRepository itemPedidoRepository;
+
 
     public static void main(String[] args) {
         SpringApplication.run(SDPApplication.class, args);
@@ -171,5 +174,19 @@ public class SDPApplication implements CommandLineRunner {
         pedidoRepository.saveAll(Arrays.asList(ped1, ped2, ped3));
         pagamentoRepository.saveAll(Arrays.asList(pgto1, pgto2, pgto3));
 
+        ItemPedido itemped1 = new ItemPedido(ped1, pdt1, 10.0, 10, pdt1.getPreco());
+        ItemPedido itemped2 = new ItemPedido(ped1, pdt2, 0.0, 2, pdt2.getPreco());
+
+        ItemPedido itemped3 = new ItemPedido(ped2, pdt3, 10.0, 10, pdt3.getPreco());
+        ItemPedido itemped4 = new ItemPedido(ped2, pdt1, 10.0, 15, pdt1.getPreco());
+
+        ped1.getItens().addAll(Arrays.asList(itemped1, itemped2));
+        ped2.getItens().addAll(Arrays.asList(itemped3, itemped4));
+
+        pdt1.getItens().addAll(Arrays.asList(itemped1, itemped4));
+        pdt2.getItens().addAll(Arrays.asList(itemped2));
+        pdt3.getItens().addAll(Arrays.asList(itemped3));
+
+        itemPedidoRepository.saveAll(Arrays.asList(itemped1, itemped2, itemped3, itemped4));
     }
 }
