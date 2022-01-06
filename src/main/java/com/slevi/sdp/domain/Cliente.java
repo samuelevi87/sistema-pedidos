@@ -1,5 +1,6 @@
 package com.slevi.sdp.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.slevi.sdp.domain.enums.TipoCliente;
 import org.jetbrains.annotations.NotNull;
@@ -31,6 +32,7 @@ public class Cliente implements Serializable {
     @CollectionTable(name = "TELEFONE")
     private Set<String> telefones = new HashSet<String>();
 
+    @JsonBackReference
     @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos = new ArrayList<Pedido>();
 

@@ -162,7 +162,7 @@ public class SDPApplication implements CommandLineRunner {
         Pagamento pgto1 = new PagamentoComCartao(null, EstadoPagamento.QUITADO, ped1, 6);
         ped1.setPagamento(pgto1);
         Pedido ped2 = new Pedido(null, data.parse("04/01/2021 16:14"), cli1, end1);
-        Pagamento pgto2 = new PagamentoComBoleto(null, EstadoPagamento.PENDENTE, ped2, data.parse("04/02/2021 00:00"), null);
+        Pagamento pgto2 = new PagamentoComBoleto(null, EstadoPagamento.PENDENTE, ped2, data.parse("04/02/2021 18:00"), null);
         ped2.setPagamento(pgto2);
         Pedido ped3 = new Pedido(null, data.parse("04/01/2021 16:14"), cli2, end2);
         Pagamento pgto3 = new PagamentoComCartao(null, EstadoPagamento.CANCELADO, ped3, 2);
