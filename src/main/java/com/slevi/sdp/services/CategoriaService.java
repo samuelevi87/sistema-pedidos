@@ -3,8 +3,10 @@ package com.slevi.sdp.services;
 import com.slevi.sdp.domain.Categoria;
 import com.slevi.sdp.repositories.CategoriaRepository;
 
+import com.slevi.sdp.services.exceptions.DataIntegrityException;
 import com.slevi.sdp.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -28,5 +30,14 @@ public class CategoriaService {
     public Categoria update(Categoria obj) {
         findById(obj.getId());
         return repository.save(obj);
+    }
+
+    public void delete(Integer id) {
+        findById(id);
+        try {
+            repository.deleteById(id);
+        } catch (DataIntegrityViolationException e) {
+            throw new DataIntegrityException("Não é possivel excluir uma categoria que tem produtos!");
+        }
     }
 }
