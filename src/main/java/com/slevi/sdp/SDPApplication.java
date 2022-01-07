@@ -46,6 +46,8 @@ public class SDPApplication implements CommandLineRunner {
         Categoria ctg3 = new Categoria(null, "Mousepad");
         Categoria ctg4 = new Categoria(null, "Vestuário");
         Categoria ctg5 = new Categoria(null, "Brindes");
+        Categoria ctg6 = new Categoria(null, "Calendários");
+        Categoria ctg7 = new Categoria(null, "Chaveiros");
 
         Produto pdt1 = new Produto(null, "Caneca Branca", 35.00);
         Produto pdt2 = new Produto(null, "Caneca Cromada", 55.00);
@@ -75,7 +77,7 @@ public class SDPApplication implements CommandLineRunner {
         pdt9.getCategorias().addAll(Arrays.asList(ctg4));
         pdt10.getCategorias().addAll(Arrays.asList(ctg4));
 
-        categoriaRepository.saveAll(Arrays.asList(ctg1, ctg2, ctg3, ctg4, ctg5));
+        categoriaRepository.saveAll(Arrays.asList(ctg1, ctg2, ctg3, ctg4, ctg5, ctg6, ctg7));
         produtoRepository.saveAll(Arrays.asList(pdt1, pdt2, pdt3, pdt4, pdt5, pdt6, pdt7, pdt8, pdt9, pdt10));
 
         Estado est1 = new Estado(null, "Acre", "AC");
